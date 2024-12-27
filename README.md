@@ -10,6 +10,8 @@ Quartus prime
 
 **THEORY**
 
+A JK Flip Flop is a type of digital memory circuit that stores a bit of information, with two inputs (J and K) and one output (Q). When J=0 and K=0, the flip flop remains in its current state; when J=1 and K=0, it sets to 1; when J=0 and K=1, it resets to 0; and when J=1 and K=1, it toggles its current state. This synchronous, edge-triggered, and sequential circuit is widely used in digital systems, counters, and registers, and its unique toggling feature makes it a fundamental building block of digital electronics.
+
 **JK Flip-Flop**
 
 JK flip-flop is the modified version of SR flip-flop. It operates with only positive clock transitions or negative clock transitions. The circuit diagram of JK flip-flop is shown in the following figure.
@@ -34,15 +36,41 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-/* write all the steps invloved */
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+Program for flipflops and verify its truth table in quartus using Verilog programming. 
 
+Developed by: DANIYEL ANTONY RAJ SD
+
+RegisterNumber: 212224220018
+```
+module jk_ff(j, k, clk, rst, q);
+  input j, k, clk, rst;
+  output reg q;
+  always @(posedge clk or posedge rst) begin
+    if (rst)
+      q <= 0; // Reset the flip-flop
+    else if (j == 0 && k == 0)
+      q <= q; // No change
+    else if (j == 0 && k == 1)
+      q <= 0; // Reset
+    else if (j == 1 && k == 0)
+      q <= 1; // Set
+    else if (j == 1 && k == 1)
+      q <= ~q; // Toggle
+  end
+ endmodule
+```
 **RTL LOGIC FOR FLIPFLOPS**
+
+![image](https://github.com/user-attachments/assets/b67f66f3-fb04-4f5a-8513-b34734089310)
+
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
+![image](https://github.com/user-attachments/assets/c9e10526-ceae-41ab-81e8-b10b64f1c9db)
+
 **RESULTS**
+
+thus the implementation of JK flipflop using verilog and validating their functionality using their functional tables is verified.
